@@ -70,7 +70,8 @@ export default function App() {
     setResult(null)
     setError(null)
     try {
-      const res = await fetch('/ioc/enrich', {
+      const base = import.meta.env.VITE_API_URL || ''
+      const res = await fetch(`${base}/ioc/enrich`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ value: ioc.trim() }),
